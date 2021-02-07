@@ -1,4 +1,17 @@
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngFor="let num of intervalElements">
+    <div class="col-xs-12">
+      <app-game-odd *ngIf="num%2 === 1" [number]="num"></app-game-odd>
+      <app-game-even *ngIf="num%2 === 0" [number]="num"></app-game-even>
+    </div>
+  </div>
+  <hr>
   <app-server-form
     (serverCreated)="onServerAdded($event)"
     (bpCreated)="onBlueprintAdded($event)"
