@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -18,43 +18,50 @@ export class ServerElementComponent implements
   @Input('srvElement')
   element: {type: string, name: string, content: string};
   @Input() name: string;
+  @ViewChild('heading', {static: true}) header: ElementRef;
 
   constructor() {
     console.log('constructor');
   }
 
-  ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngAfterContentInit(): void {
-    console.log('ngAfterContentInit');
-  }
-
-  ngDoCheck(): void {
-    console.log('ngDoCheck');
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges');
+    console.log(changes);
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges');
-    console.log(changes);
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
   }
 
-  // console.log('')
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+    console.log('Text Content: ' + this.header.nativeElement.textContent);
+  }
 }
